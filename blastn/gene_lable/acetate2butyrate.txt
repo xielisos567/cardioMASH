@@ -1,0 +1,6 @@
+EC1_2-faecali
+HCDH
+Thiolase_C_N
+Acyl-CoA_dh_1
+ETF_beta
+ETF_alpha
