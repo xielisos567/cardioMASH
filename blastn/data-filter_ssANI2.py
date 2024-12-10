@@ -53,7 +53,7 @@ def dataFilter(data, setv, out):
 			#species_id = re.sub("[\'\[\]]", "", species_id)
 			#species_id = species_id.replace('\'','')
 			if species_id not in setv:
-				if identity >= 99:
+				if identity >= 97:
 					line_info.insert(2, species_id)
 					line_info.insert(2, species_info)
 					line_info.insert(2,gene_info)

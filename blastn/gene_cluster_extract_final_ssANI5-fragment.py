@@ -158,12 +158,14 @@ def getAllOk(data, tables, genes, out):
 		#gene_id = re.split(':|/', line_info[2])[-1].strip()
 		#print (line, line_info[2])
 		gene_id, type_lable = getGeneID(line_info[2], tables)
+		#print (gene_id)
 		line_info.insert(2, genes[gene_id])
 		if line_info[1].startswith('lcl'):
 			genome_id = '_'.join(line_info[1].split('_')[:-3]).strip()
 		else:
 			genome_id = '_'.join(line_info[1].split('_')[:-1]).strip()
 		line_info.insert(1, genome_id)
+		line_info[4] = gene_id
 		line = '\t'.join(line_info)
 		out_file.write(f'{line}\n')
 	out_file.close()
@@ -268,6 +270,7 @@ def rmDup(out_body, table_count, generange=10):
 					continue
 			elif gene_type == 'p-cresol':
 				if len(set(group_df['gene'].to_list()).intersection(set(['hpdA', 'hpdB']))) < 2:
+					#print (group_df['gene'].to_list())
 					#print (gene_type, group_df, set(group_df['gene'].to_list()).intersection(set(['hpdA', 'hpdB'])))
 					fail_df = fail_df.append(group_df)
 					continue
@@ -278,7 +281,8 @@ def rmDup(out_body, table_count, generange=10):
 			fail_df = fail_df.append(group_df)
 			continue
 		if gene_type == 'p-cresol':
-			print (group_df)
+			#print (group_df)
+			pass
 		if data_id not in rmdup_data:
 			rmdup_data[data_id].append(group_df)
 		else:
@@ -421,7 +425,10 @@ def getStat(df, out, tablelist):
 
 def rmDupUncomplete(data, out):
 	#data_uncomplete = pd.read_table(data, header=0)
-	all_grouped_data = data.groupby(['sample', 'Type', 's_genome', 'strain'])
+	try:
+		all_grouped_data = data.groupby(['sample', 'Type', 's_genome', 'strain'])
+	except:
+		return
 	rmdup_data = defaultdict(list)
 	rmdup_data_tmp = defaultdict(list)
 	# 遍历分组后的数据，去除重复数据
@@ -494,7 +501,10 @@ def rmDupUncomplete(data, out):
 def getUncompleteStat(df, out, tablelist):
 	#df = pd.read_table(df, header=0)
 	out_stat = pd.DataFrame(columns=tablelist)
-	all_grouped_data = df.groupby(['sample', 'Type'])
+	try:
+		all_grouped_data = df.groupby(['sample', 'Type'])
+	except:
+		return
 	# 统计每个样本中每种基因的数量
 	for group_data in all_grouped_data:
 		sample_id, gene_type = group_data[0][:2]
@@ -543,7 +553,7 @@ def geneStat(indata, tables, out):
 	for line in rmdup_data:
 			line_info = line.strip().split('\t')
 			#sample_id = line_info[0].split('.')[0]
-			sample_id = re.search('(.*bin.\d{1,}).', line_info[0]).group(1)
+			sample_id = re.search('(.*).bls.fmt6', line_info[0]).group(1)
 			for genetype in class2:
 				if re.search(genetype, line_info[4]):
 					gene = genetype
