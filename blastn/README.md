@@ -6,7 +6,7 @@ do
 done
 ```
 
-###Step 2, blastn through the nucleotide database of eCAMGC:
+###Step 2, blastn through the nucleotide database of cvdMGC:
 ```
 for i in `ls ./`
 do
@@ -23,3 +23,6 @@ python3 data-filter_ssANI2.py ANI_result.txt 20_genomes_results_all.out 20_genom
 ```
 python3 gene_cluster_extract_final_ssANI5-fragment.py gene_lable 20_genomes_ssANI_output.txt result/final_20_genomes_ssANI_output_statics
 ```
+
+###Attentions:
+pandas version < 1.4.0

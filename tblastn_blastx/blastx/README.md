@@ -1,4 +1,4 @@
-###blastx: sequence alignment of the nucleotide coding sequence to the eCAMGC protein database, the results are filtered by 40％ identity and 80％ coverage:
+###blastx: sequence alignment of the nucleotide coding sequence to the cvdMGC protein database, the results are filtered by 40％ identity and 80％ coverage:
 ```
 for i in `ls cds_seq/`
 do
