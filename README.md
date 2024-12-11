@@ -5,7 +5,7 @@ cardioMASH is designed to determine the cardiovascular disease associated metabo
 * [BLAST](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
 * [Prodigal](https://github.com/hyattpd/Prodigal)
 * [BBMap](https://github.com/BioInfoTools/BBMap)
-* [Python3](https://www.python.org/downloads/)
+* [Python=3.7](https://www.python.org/downloads/)
 * Python modules: 
     * [Pandas < 1.4.0](http://pandas.pydata.org/pandas-docs/stable/install.html)
     * [numpy](https://numpy.org/)
@@ -104,7 +104,5 @@ Genomic analysis of metagenome such as the assembled genomes, BLASTX is recommen
 
 ## Copyright
 Shulei Jia, E-mail: jiashulei@tmu.edu.cn  
-
 School of Basic Medical Sciences, Tianjin Medical University, Tianjin, 300070, China
-
 Institute of Microbiology, Chinese Academy of Sciences, Beijing, 100101, China

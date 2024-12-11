@@ -26,3 +26,4 @@ python3 gene_cluster_extract_final_ssANI5-fragment.py gene_lable 20_genomes_ssAN
 
 ###Attentions:
 pandas version < 1.4.0
+python=3.7 (suggested version)
