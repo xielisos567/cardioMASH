@@ -106,5 +106,4 @@ Genomic analysis of metagenome such as the assembled genomes, BLASTX is recommen
 Shulei Jia, E-mail: jiashulei@tmu.edu.cn  
 School of Basic Medical Sciences, Tianjin Medical University, Tianjin, 300070, China
 
-
 Institute of Microbiology, Chinese Academy of Sciences, Beijing, 100101, China
