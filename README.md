@@ -85,11 +85,20 @@ python3 data-filter_ssANI2.py ANI_result.txt combine_blastn_results_all.out 15_g
 ```
 python3 gene_cluster_extract_final_ssANI6-fragment.py gene_lable 15_genomes_ssANI.txt final_result2/15_genomes_annotation
 ```
-**Example terminal output:
+**Expected output structure of `final_result2/`:
+The `final_result2/` directory contains the final annotation outputs. The directory structure is as follows:
+
 ```
-$ cd final_result2 && ls -l
-15_genomes_combine.complete.rmdup.xls; 15_genomes_combine.complete.stat.xlsx; 15_genomes_combine.fail.xls; 15_genomes_combine.filter.xls; 15_genomes_combine.fragmentary.rmdup.xls;
-15_genomes_combine.fragmentary.stat.xlsx; 15_genomes_combine.fragmentary.xls; 15_genomes_combine.gene.data.xls; 15_genomes_combine.gene.stat.xlsx
+final_result2/
+├── 15_genomes_annotation.complete.rmdup.xls
+├── 15_genomes_annotation.complete.stat.xlsx
+├── 15_genomes_annotation.fail.xls
+├── 15_genomes_annotation.filter.xls
+├── 15_genomes_annotation.fragmentary.rmdup.xls
+├── 15_genomes_annotation.fragmentary.stat.xlsx
+├── 15_genomes_annotation.fragmentary.xls
+├── 15_genomes_annotation.gene.data.xls
+└── 15_genomes_annotation.gene.stat.xlsx
 ```
 
 ## Instructions for use
