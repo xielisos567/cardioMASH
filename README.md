@@ -9,9 +9,10 @@ cardioMASH is designed to determine the cardiovascular disease associated metabo
 * The software has been tested on Ubuntu 20.04 LTS.
 
 ### Dependencies
-* [BLAST](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
-* [Prodigal](https://github.com/hyattpd/Prodigal)
-* [BBMap](https://github.com/BioInfoTools/BBMap)
+* [BLAST: tested with v2.16.0+](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
+* [Prodigal: tested with v2.6.3](https://github.com/hyattpd/Prodigal)
+* [BBMap: tested with version 39.26](https://github.com/BioInfoTools/BBMap)
+* [DIAMOND: tested with v0.8.36.98](https://github.com/bbuchfink/diamond/releases)
 * [Python>=3.7,<3.12](https://www.python.org/downloads/)
 * Python modules: 
     * [Pandas < 1.4.0](http://pandas.pydata.org/pandas-docs/stable/install.html)
@@ -19,6 +20,7 @@ cardioMASH is designed to determine the cardiovascular disease associated metabo
 
 ### Hardware requirements
  *Standard hardware: No non-standard hardware is required. Runs on standard Linux/Unix systems.
+ 
  *Recommended configuration: CPU threads ≥ 8, RAM ≥ 64 GB.
 
 ## Installation guide
@@ -28,14 +30,20 @@ Sequence alignment requires the [cvdMGC database](https://github.com/xielisos567
 
 #### Step 2. Download main scripts
 git clone https://github.com/xielisos567/cardioMASH
+
 cd cardioMASH/core_functionality
 
 #### Step 3. Install the Dependencies
-The dependencies are required to be installed and added to the system $PATH.
+We recommend using [Mamba](https://github.com/mamba-org/mamba) to install all dependencies automatically. 
+An `environment.yml` file is provided in the repository. You can create the environment by running:
+```
+mamba env create -f environment.yml
+mamba activate cardioMASH
+```
 Typical install time: Approximately 5-10 minutes on a normal desktop computer (excluding database download time).
 
 ## Demo
-A small demo dataset containing 15 bacterial genomes (15_genomes/) is provided in the repository to test the core BLASTN pipeline.
+The demo dataset (15_genomes/), the genome list (15_genomes.txt), the species-specific average nucleotide identity file (ANI_result.txt), and the target gene label file (gene_lable) are all provided in the repository.
  * Expected run time: With the core functionality (BLASTN), less than 5 minutes on a normal desktop computer (8 threads, 16GB RAM).
  * Expected output: The demo will generate a combined alignment result (combine_blastn_results_all.out), a filtered result based on species-specific ANI (15_genomes_ssANI.txt), and the final annotation output in the final_result2/ directory, which summarizes the detected MGCs and associated taxonomy.
 
@@ -76,6 +84,12 @@ python3 data-filter_ssANI2.py ANI_result.txt combine_blastn_results_all.out 15_g
 (The gene_lable file contains the target gene clusters and associated genes to be extracted)
 ```
 python3 gene_cluster_extract_final_ssANI6-fragment.py gene_lable 15_genomes_ssANI.txt final_result2/15_genomes_annotation
+```
+**Example terminal output:
+```
+$ cd final_result2 && ls -l
+15_genomes_combine.complete.rmdup.xls; 15_genomes_combine.complete.stat.xlsx; 15_genomes_combine.fail.xls; 15_genomes_combine.filter.xls; 15_genomes_combine.fragmentary.rmdup.xls;
+15_genomes_combine.fragmentary.stat.xlsx; 15_genomes_combine.fragmentary.xls; 15_genomes_combine.gene.data.xls; 15_genomes_combine.gene.stat.xlsx
 ```
 
 ## Instructions for use
@@ -168,6 +182,7 @@ python3 gene_cluster_extract_tblastn.py gene_lable <output_trans_tblastn> final_
 
 ## Copyright
 Shulei Jia, E-mail: jiashu320lei@126.com; jiashulei@tmu.edu.cn
+
 School of Basic Medical Sciences, Tianjin Medical University, Tianjin, 300070, China
 
 Institute of Microbiology, Chinese Academy of Sciences, Beijing, 100101, China
