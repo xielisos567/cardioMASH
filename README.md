@@ -11,7 +11,6 @@ cardioMASH is designed to determine the cardiovascular disease associated metabo
 ### Dependencies
 * [BLAST: tested with v2.16.0+](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
 * [Prodigal: tested with v2.6.3](https://github.com/hyattpd/Prodigal)
-* [BBMap: tested with version 39.26](https://github.com/BioInfoTools/BBMap)
 * [DIAMOND: tested with v0.8.36.98](https://github.com/bbuchfink/diamond/releases)
 * [Python>=3.7,<3.12](https://www.python.org/downloads/)
 * Python modules: 
@@ -150,11 +149,11 @@ done
 ```
 #### Step 3. Data format conversion
 ```
-python3 data_format_trans.py <BLASTX_alignment_results> <output_trans_blastx> c
+python3 data_format_trans_blastx.py <BLASTX_alignment_results> <output_trans_blastx> c
 ```
 #### Step 4. Calculate the final results
 ```
-python3 gene_cluster_extract_blastx.py gene_lable <output_trans_blastx> final_result2/<output_result_blastx_statics>
+python3 gene_cluster_extract_blastx.py gene_lable <output_trans_blastx> blastx_final_result2/<output_result_blastx_statics>
 ```
 
 ### Auxiliary Function2: Running TBLASTN
@@ -181,11 +180,11 @@ done
 ```
 #### Step 3. Data format conversion
 ```
-python3 data_format_trans.py <TBLASTN_alignment_results> <output_trans_tblastn> s
+python3 data_format_trans_tblastn.py <TBLASTN_alignment_results> <output_trans_tblastn> s
 ```
 #### Step 4. Calculate the final results
 ```
-python3 gene_cluster_extract_tblastn.py gene_lable <output_trans_tblastn> final_result2/<output_result_tblastn_statics> tblastn
+python3 gene_cluster_extract_tblastn.py gene_lable <output_trans_tblastn> tblastn_final_result2/<output_result_tblastn_statics> tblastn
 ```
 
 
