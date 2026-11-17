@@ -64,7 +64,7 @@ sed -i 's/ /_/g' combine_CVD_cds.fasta
 ```
 for i in `cat ./15_genomes.txt`
 do
-  blastn -query ../combine_CVD_cds.fasta -db ./15_genomes/${i}.fna -evalue 1e-5 -perc_identity 80 -qcov_hsp_perc 80 -max_target_seqs 1 -out result/${i}.bls.fmt6 -outfmt "6 std gaps qcovs qcovhsp sseq" -num_threads 6
+  blastn -query ../cvdMGC/combine_CVD_cds.fasta -db ./15_genomes/${i}.fna -evalue 1e-5 -perc_identity 80 -qcov_hsp_perc 80 -max_target_seqs 1 -out result/${i}.bls.fmt6 -outfmt "6 std gaps qcovs qcovhsp sseq" -num_threads 6
 done
 ```
 #### Step 3: Merge sequence alignment results
@@ -109,7 +109,7 @@ final_result2/
 #### Step 1. BLASTN through the nucleotide database of cvdMGC 
 (Note: Before running BLASTN, concatenate the gene IDs in the headers of the merged CDS sequences using sed, replacing spaces with underscores, e.g.: sed -i 's/ /_/g' all_redundant_genes.fasta)
 ```
-blastn -query cvdMGC/all_redundant_genes.fasta -db <makeblastdb_genomes> -evalue 1e-5 -perc_identity 80 -qcov_hsp_perc 80 -max_target_seqs 1 -out result/<BLASTN_alignment_results> -outfmt "6 std gaps qcovs qcovhsp sseq" -num_threads 4
+blastn -query cvdMGC/all_redundant_genes.fasta -db <makeblastdb_genomes> -evalue 1e-5 -perc_identity 80 -qcov_hsp_perc 80 -max_target_seqs 1 -out result/<BLASTN_alignment_results> -outfmt "6 std gaps qcovs qcovhsp sseq" -num_threads 6
 ```
 #### Step 2: Merge sequence alignment results
 ```
@@ -154,7 +154,7 @@ python3 data_format_trans.py <BLASTX_alignment_results> <output_trans_blastx> c
 ```
 #### Step 4. Calculate the final results
 ```
-python3 gene_cluster_extract_blastx.py gene_lable <output_trans_blastx> final_results/<output_result_blastx_statics>
+python3 gene_cluster_extract_blastx.py gene_lable <output_trans_blastx> final_result2/<output_result_blastx_statics>
 ```
 
 ### Auxiliary Function2: Running TBLASTN
@@ -185,7 +185,7 @@ python3 data_format_trans.py <TBLASTN_alignment_results> <output_trans_tblastn> 
 ```
 #### Step 4. Calculate the final results
 ```
-python3 gene_cluster_extract_tblastn.py gene_lable <output_trans_tblastn> final_results/<output_result_tblastn_statics> tblastn
+python3 gene_cluster_extract_tblastn.py gene_lable <output_trans_tblastn> final_result2/<output_result_tblastn_statics> tblastn
 ```
 
 

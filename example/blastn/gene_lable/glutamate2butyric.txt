@@ -1,0 +1,7 @@
+Gcd_beta
+Gct_alpha
+Gct_beta
+Gcd_alpha
+L2Hgdh
+HgCoAd2
+HgCoAd1
