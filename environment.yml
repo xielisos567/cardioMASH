@@ -6,13 +6,13 @@ channels:
 dependencies:
   # basic environment (Python>=3.7,<3.12)
   - python=3.9
-
+  
   # Softwares:
   - blast=2.13.0
   - prodigal=2.6.3
-  - bbmap=38.90
   - diamond=2.1.8
-
+  
   # Python (Pandas < 1.4.0)
   - pandas=1.3.5
   - numpy
+  - openpyxl
